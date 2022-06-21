@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import WithRouter from '../components/rcc/Get_Api/WithRouter';
+import Home from '../dashboard/Home';
 import './../App.css'
 
  class CurdOperation extends Component {
@@ -59,47 +60,51 @@ import './../App.css'
   render() {
     // console.log(this.state.myData)
     return (
-      <div className='App App-header'>  
-       <table>
-           <thead>
-               <tr>
-                   <th>Id</th>
-                   <th>Name</th>
-                   <th>Email</th>
-                   <th>Date of Birth</th>
-                   <th>Position</th>
-                   <th>Technologies known</th>
-                   <th>Technologie Type</th>
-               </tr>
-           </thead>
-           <tbody>
-                {
-                    // console.log(this.state.data)
-                    // this.state.myData > 0 &&
-                    this.state.myData.map((cv,idx,arr) =>{
-                        //  console.log(cv);
-                        const id = cv._id
-                        return(  
-                          <tr key={idx}>
-                            <td>{idx+1}</td>
-                            <td>{cv.name}</td>
-                            <td>{cv.email}</td>
-                            <td>{new Date(cv.dob).toISOString().split('T')[0]}</td>
-                            <td>{cv.position}</td>
-                            <td>{cv.technologies_known}</td>
-                            <td>{cv.technologie_type}</td>
-                            <td>
-                              <button name='edit' className='btn btn-info btn-sm edit_btn' onClick={()=>{this.editFrom(id)}}>Edit</button>&nbsp;&nbsp;
-                              <button name='edit' className='btn btn-danger btn-sm del_btn' value={cv._id} onClick={()=>{this.deleteFrom(id)}}>Delete</button>
-                            </td>
-                          </tr>
-                        )
-                    })
-                }
-           </tbody>
-       </table>
+      <>
+      <Home />
+        <div className='App App-header'>  
+        <table>
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Date of Birth</th>
+                    <th>Position</th>
+                    <th>Technologies known</th>
+                    <th>Technologie Type</th>
+                </tr>
+            </thead>
+            <tbody>
+                  {
+                      // console.log(this.state.data)
+                      // this.state.myData > 0 &&
+                      this.state.myData.map((cv,idx,arr) =>{
+                          //  console.log(cv);
+                          const id = cv._id
+                          return(  
+                            <tr key={idx}>
+                              <td>{idx+1}</td>
+                              <td>{cv.name}</td>
+                              <td>{cv.email}</td>
+                              <td>{new Date(cv.dob).toISOString().split('T')[0]}</td>
+                              <td>{cv.position}</td>
+                              <td>{cv.technologies_known}</td>
+                              <td>{cv.technologie_type}</td>
+                              <td>
+                                <button name='edit' className='btn btn-info btn-sm edit_btn' onClick={()=>{this.editFrom(id)}}>Edit</button>&nbsp;&nbsp;
+                                <button name='edit' className='btn btn-danger btn-sm del_btn' value={cv._id} onClick={()=>{this.deleteFrom(id)}}>Delete</button>
+                              </td>
+                            </tr>
+                          )
+                      })
+                  }
+            </tbody>
+        </table>
+        
+        </div>
+      </>
       
-      </div>
     );
   }
 }

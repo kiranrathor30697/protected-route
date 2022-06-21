@@ -1,6 +1,7 @@
 import axios from 'axios';
 import React, { Component } from 'react';
 import WithRouter from '../components/rcc/Get_Api/WithRouter';
+import Home from '../dashboard/Home';
 
  class CreateEmployees extends Component {
     state = {
@@ -51,17 +52,20 @@ import WithRouter from '../components/rcc/Get_Api/WithRouter';
       }
       render() {
         return (
-          <div className='App App-header'>
-            <form className='border bg-dark w-25 p-4 offset-4 rounded'>
-              <input type='text' name='name' onChange={(e)=>{this.handleChange(e)}} className='d-block form-control mb-3' placeholder='Enter Name' />
-              <input type='email' name='email' onChange={(e)=>{this.handleChange(e)}} className='d-block form-control mb-3' placeholder='Enter Email' />
-              <input type='date' name='dob' onChange={(e)=>{this.handleChange(e)}} className='d-block form-control mb-3' placeholder='Enter Date of Birth' />
-              <input type='text' name='position' onChange={(e)=>{this.handleChange(e)}} className='d-block form-control mb-3' placeholder='Enter Your Positon' />
-              <input type='text' name='technologies_known' onChange={(e)=>{this.handleChange(e)}} className='d-block form-control mb-3' placeholder='Enter Technologies Know' />
-              <input type='text' name='technologie_type' onChange={(e)=>{this.handleChange(e)}} className='d-block form-control mb-3' placeholder='Enter Technologie Type' />
-              <button type='submit' name='submit' onClick={(e)=>{this.handleSubmit(e)}} className='btn btn-success'>Register Form</button>
-            </form>
-          </div>
+          <>
+            <Home />
+            <div className='App App-header'>
+              <form className='border bg-dark w-25 p-4 offset-4 rounded'>
+                <input type='text' name='name' onChange={(e)=>{this.handleChange(e)}} className='d-block form-control mb-3' placeholder='Enter Name' />
+                <input type='email' name='email' onChange={(e)=>{this.handleChange(e)}} className='d-block form-control mb-3' placeholder='Enter Email' />
+                <input type='date' name='dob' onChange={(e)=>{this.handleChange(e)}} className='d-block form-control mb-3' placeholder='Enter Date of Birth' />
+                <input type='text' name='position' onChange={(e)=>{this.handleChange(e)}} className='d-block form-control mb-3' placeholder='Enter Your Positon' />
+                <input type='text' name='technologies_known' onChange={(e)=>{this.handleChange(e)}} className='d-block form-control mb-3' placeholder='Enter Technologies Know' />
+                <input type='text' name='technologie_type' onChange={(e)=>{this.handleChange(e)}} className='d-block form-control mb-3' placeholder='Enter Technologie Type' />
+                <button type='submit' name='submit' onClick={(e)=>{this.handleSubmit(e)}} className='btn btn-success'>Register Form</button>
+              </form>
+            </div>
+          </>
         );
       }
     }

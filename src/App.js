@@ -15,6 +15,7 @@ import CurdOperation from './pages/CurdOperation';
 import Delete from './pages/Delete';
 import Edit from './pages/Edit';
 import Login2 from './pages/Login2';
+import Logout from './pages/Logout';
 import Register2 from './pages/Register2';
 
 export default function App() {
@@ -37,6 +38,7 @@ export default function App() {
           <Route path="/curdoperation" element={<CurdOperation />} />
           <Route path="/curdoperation/:id" element={<Delete />} />
           <Route path="/edit/:id" element={<Edit />} />
+          <Route path="/logout" element={<Logout />} />
           {/* <Route path="/***" element={<Error />} /> */}
         </Routes>
       </BrowserRouter>

@@ -1,5 +1,6 @@
 import axios from 'axios';
 import React, { Component } from 'react';
+import Home from '../dashboard/Home';
 import './../App.css'
 
 export default class Register2 extends Component {
@@ -43,7 +44,9 @@ export default class Register2 extends Component {
   }
   render() {
     return (
-      <div className='App App-header'>
+      <>
+        <Home />
+        <div className='App App-header'>
         <form className='border bg-dark w-25 p-4 offset-4 rounded'>
           <input type='text' name='userName' onChange={(e)=>{this.handleChange(e)}} className='d-block form-control mb-3' placeholder='Enter user Name' />
           <input type='email' name='email' onChange={(e)=>{this.handleChange(e)}} className='d-block form-control mb-3' placeholder='Enter Email' />
@@ -52,6 +55,8 @@ export default class Register2 extends Component {
           <button type='submit' name='submit' onClick={(e)=>{this.handleSubmit(e)}} className='btn btn-success'>Register Form</button>
         </form>
       </div>
+      </>
+      
     );
   }
 }
