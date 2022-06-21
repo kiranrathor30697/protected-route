@@ -10,14 +10,24 @@ import Home from '../dashboard/Home';
 
   state = {
     userName: "",
-    password: ""
+    password: "",
+    btn_hide:false
   }
   handleChange = (e) =>{
     // console.log(e);
     const {name,value} = e.target;
     // console.log(name,value);
-    this.setState({[name]:value})
-    console.log(this.state)
+    let token = localStorage.getItem('token');
+    if(!token){
+      this.setState({
+        ...this.state,
+        [name]:value,
+        btn_hide:true
+      })
+    }
+    
+    // console.log(this.state)
+
   }
   handleSubmit = async (e) =>{
     e.preventDefault();
@@ -32,10 +42,10 @@ import Home from '../dashboard/Home';
       // console.log(login2.status);
       if(login2.status == 200){
         toast.success("Login Successfully");
-
+       
         localStorage.setItem('token',JSON.stringify('eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MmIwNjFkZTVhN2VhZTY2YmMzZjU5NGUiLCJpYXQiOjE2NTU3MjY1ODF9.fLpbHZhoLIUnEYhYK0r5uwdDse29GKim2PGwEhoDk4c'))
         
-        this.props.navigate('/');
+        this.props.navigate('/home');
       }
     } catch (error) {
       // console.log(error.response.status);
@@ -51,9 +61,10 @@ import Home from '../dashboard/Home';
         <Home />
         <div className='App App-header'>
         <form className='border bg-dark w-25 p-4 offset-4 rounded'>
+          <h2 className='mb-4'>Login Form</h2>
           <input type='text' name='userName' onChange={(e)=>{this.handleChange(e)}} className='d-block form-control mb-3' placeholder='Enter user Name' />
           <input type='password' name='password' onChange={(e)=>{this.handleChange(e)}} className='d-block form-control mb-3' placeholder='Enter Password' />
-          <button type='submit' name='submit' onClick={(e)=>{this.handleSubmit(e)}} className='btn btn-success'>Register Form</button>
+          <button type='submit' name='submit' disabled={!this.state.btn_hide} onClick={(e)=>{this.handleSubmit(e)}} className='btn btn-success'>Register Form</button>
         </form>
       </div>
       </>
